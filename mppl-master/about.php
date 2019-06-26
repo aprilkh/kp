@@ -1,0 +1,206 @@
+<?php
+require("connect.php");
+session_start();
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>ITS Lost n Found</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+    <!-- Theme CSS -->
+    <link href="css/grayscale.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a href="index.php">
+                    <img src="img/kecil1.png">
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="register.php">Register</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="listtemu.php">Barang Temuan</a>
+                    </li>
+
+                    <!-- 2. TOLONG TEMUKAN -->       
+                    <li>
+                        <a class="page-scroll" href="listhilang.php">Barang Hilang</a>
+                    </li>
+
+
+                    <!-- 3. KONTAK -->
+                    <li>
+                        <a class="page-scroll" href="index.php#contact">Contact</a>
+                    </li>
+
+                    <!-- 4. LOGIN, USER PROFILE, LOGOUT  --> 
+                    <?php
+                    if(!empty($_SESSION)){
+                        include("connect.php");
+
+                        $username  = $_SESSION['uname'];
+                        echo '<li>
+                        <a class="page-scroll" href="pengguna">'.$username.'</a>
+                        </li>';
+                        echo '<li>
+                        <a class="page-scroll" href="logout.php">Logout</a>
+                        </li>';
+                        }
+                    else 
+                    {?>     
+                    <li>
+                        <a class="page-scroll" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</a>
+                        <div id="id01" class="modal" >     
+                               <div class="modal-dialog">
+                            <div class="modal-content animate">
+                                <div class="modal-header">
+                                <div class="clearfix"></div>
+                                          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                                          <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
+                                        </div>
+                                        <div class="modal-body">
+
+                                          <form role="form" action="login.php" method="post" >
+                                              <strong class="text-primary">
+                                                <span class="glyphicon glyphicon-user"></span> Username</strong>
+                                              <input type="text" class="form-control" name="uname" placeholder="Enter Username" style="width:100%;" required>
+                                              
+                                              <strong class="text-primary">
+                                              <span class="glyphicon glyphicon-eye-open"></span> Password</strong>
+                                              <input type="password" class="form-control" name="psw" placeholder="Enter password" style="width:100%;" required>
+
+                                              <button type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+                                          </form>
+                                        </div>
+                                </div>
+                                </div>
+                    </li>  
+                    <?php
+                    }    
+                    ?>
+                    <li>
+                        <a class="page-scroll" href="about.php">About</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <section id="about" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">About The Site
+                </h1>
+                <p>Masalah kehilangan barang menjadi hal yang sering terjadi terutama di kawasan ITS. Namun untuk saat ini, untuk penyebaran informasi mengenai kehilangan barang hanya dilakukan melalui broadcast pesan berantai di media sosial sehingga penyebaran informasinya dirasa kurang efektif. Sebenarnya ITS sudah mempunyai official account LINE yang bernama ITS Lost and Found, namun OA tersebut dirasa kurang efektif karena sering tidak aktif sehingga berita menjadi tidak update.</p>  
+
+                <p>Masyarakat umum yang menemukan maupun kehilangan barang di sekitar lingkungan ITS dapat memanfaatkan aplikasi ini. Beberapa aktivitas yang dapat dilakukan oleh sistem informasi ITS Lost and Found antara lain, mendaftarkan pengguna baru, membuat laporan kehilangan atau penemuan, melakukan klaim barang, mencari barang berdasarkan kata kunci atau kategori (hilang/temuan), dan menghapus barang yang telah diklaim. Untuk selengkapnya bisa <a href="index.php#contact">menghubungi admin.</a></p>
+            </div>
+        </div>
+
+        <!-- Team Members Row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Our Team</h1>
+            </div>
+
+            <div class="col-lg-12">
+            <div class="col-lg-9 col-sm-12 text-right">
+                <h3>Yasinta Romadhona
+                    <small>05111640000039</small>
+                </h3>
+                <p>"Life adalah kehidupan."</p>
+            </div>
+            <div class="col-lg-3 col-sm-6 text-center">
+                <img class="img-circle img-responsive img-center" src="img/avayas.jpg" alt="">
+            </div>
+            </div>
+
+            <div class="col-lg-12">
+             <div class="col-lg-3 col-sm-6 text-center">
+                <img class="img-circle img-responsive img-center" src="img/avapin.jpg" alt="">
+            </div>
+            <div class="col-lg-9 col-sm-12 text-left">
+                <h3>Fina Fitri Yunita
+                    <small>05111640000067</small>
+                </h3>
+                <p>"Ketika hidup untuk bernapas."</p>
+            </div>
+            </div>
+
+            <div class="col-lg-12">
+            <div class="col-lg-9 col-sm-12 text-right">
+                <h3>Aprilia Khairunnisa
+                    <small>05111640000136</small>
+                </h3>
+                <p>"Iyain aja biar cepet."</p>
+            </div>
+            <div class="col-lg-3 col-sm-6 text-center">
+                <img class="img-circle img-responsive img-center" src="img/avapril.jpg" alt="">
+            </div>
+            </div>
+      
+    </section>
+         <!-- Introduction Row -->
+        
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p>&copy; 2019 ITS lnf | <a href="about.php">About</a><p>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/grayscale.min.js"></script>
+
+</body>
+
+</html>
