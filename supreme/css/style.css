@@ -5169,8 +5169,8 @@ input:focus {
 
 /* line 1, ../../01 cl html template/New folder/May 2019/175  Supreme Industry/Supreme Industry Html/sass/_breadcrumb.scss */
 .breadcrumb_bg {
-  background-image: url("../img/breadcrumb.png");
-  background-position: center;
+  background-image: url("../img/about_img_11.jpg");
+  background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 0% 0% 50% 50% / 0% 0% 7% 7%;
