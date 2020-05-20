@@ -48,8 +48,8 @@ class M_pengaduan extends CI_Model {
 			'nik'    	=> $nik,
             'tanggal'   => $tanggal,
 			'pengaduan'	=> $pengaduan,
-			'bagian'	=> $bagian,
-			'divisi'	=> $divisi,
+			//'bagian'	=> $bagian,
+			//'divisi'	=> $divisi,
 			'file'		=> $file,
             'status' 	=> $status
 				);
